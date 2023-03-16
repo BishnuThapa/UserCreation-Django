@@ -9,9 +9,13 @@ def index(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-        messages.success(request, 'User created Successfully')
+        messages.success(request, "User created Successfully")
         return redirect('index')
     else:
         form = UserCreationForm()
 
-    return render(request, 'register.html', {'form': form})
+    context = {
+        'form': form
+    }
+
+    return render(request, 'register.html', context)
