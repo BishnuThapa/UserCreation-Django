@@ -9,8 +9,10 @@ def index(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-        messages.success(request, "User created Successfully")
-        return redirect('index')
+            messages.success(request, "User created Successfully")
+            return redirect('index')
+        else:
+            messages.error(request, "Error")
     else:
         form = UserCreationForm()
 
